@@ -1,0 +1,27 @@
+{
+  "name": "ifttt-webhook",
+  "version": "1.0.0",
+  "description": "Simple IFTTT webhook with some useful features",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ithildir/ifttt-webhook.git"
+  },
+  "keywords": [
+    "ifttt",
+    "toggl",
+    "webhook"
+  ],
+  "author": "Andrea Di Giorgi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ithildir/ifttt-webhook/issues"
+  },
+  "homepage": "https://github.com/Ithildir/ifttt-webhook#readme",
+  "dependencies": {
+    "toggl-api": "^1.0.1"
+  }
+}
