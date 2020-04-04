@@ -1,0 +1,6 @@
+{
+  "env": {
+    "TOGGL_API_TOKEN": "@toggl-api-token",
+    "WEBHOOK_AUTH_TOKEN": "@webhook-auth-token"
+  }
+}

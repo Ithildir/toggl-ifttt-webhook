@@ -1,2 +1,3 @@
-# toggl-ifttt-webhook
-Simple IFTTT webhook to start/stop time entries in Toggl
+# Andrea's IFTTT Webhook
+
+Simple IFTTT webhook with some useful features.
