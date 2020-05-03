@@ -4,6 +4,7 @@
   "private": true,
   "description": "Simple IFTTT webhook with some useful features",
   "keywords": [
+    "habitica",
     "ifttt",
     "toggl",
     "webhook"
@@ -33,6 +34,7 @@
     ]
   },
   "dependencies": {
+    "superagent": "^5.2.2",
     "toggl-api": "^1.0.1"
   },
   "devDependencies": {
