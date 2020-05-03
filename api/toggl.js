@@ -1,7 +1,8 @@
 const TogglClient = require('toggl-api');
 const { promisify } = require('util');
+const { sendStatus, withAuth } = require('../utils');
 
-const { TOGGL_API_TOKEN, WEBHOOK_AUTH_TOKEN } = process.env;
+const { TOGGL_API_TOKEN } = process.env;
 
 const toggl = new TogglClient({ apiToken: TOGGL_API_TOKEN });
 
@@ -10,10 +11,6 @@ const getCurrentTimeEntryAsync = promisify(
 );
 const startTimeEntryAsync = promisify(toggl.startTimeEntry.bind(toggl));
 const stopTimeEntryAsync = promisify(toggl.stopTimeEntry.bind(toggl));
-
-function sendStatus(res, status, message) {
-  return res.status(status).send(message);
-}
 
 async function stopTimer() {
   const timeEntry = await getCurrentTimeEntryAsync();
@@ -39,12 +36,8 @@ async function startTimer({ description }) {
   console.log(`Started time entry ${timeEntry.id}: "${timeEntry.description}"`);
 }
 
-module.exports = async (req, res) => {
-  const { auth, cmd } = req.body;
-
-  if (auth !== WEBHOOK_AUTH_TOKEN) {
-    return sendStatus(res, 403);
-  }
+module.exports = withAuth(async (req, res) => {
+  const { cmd } = req.body;
 
   if (cmd === 'start') {
     await startTimer(req.body);
@@ -55,4 +48,4 @@ module.exports = async (req, res) => {
   }
 
   return sendStatus(res, 200);
-};
+});
