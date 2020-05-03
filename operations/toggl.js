@@ -1,6 +1,7 @@
 const TogglClient = require('toggl-api');
 const { promisify } = require('util');
 const habitica = require('./habitica');
+const { fixText } = require('../utils');
 
 const { TOGGL_API_TOKEN } = process.env;
 
@@ -11,16 +12,6 @@ const getCurrentTimeEntryAsync = promisify(
 );
 const startTimeEntryAsync = promisify(toggl.startTimeEntry.bind(toggl));
 const stopTimeEntryAsync = promisify(toggl.stopTimeEntry.bind(toggl));
-
-function fixDescription(description) {
-  let fixedDescription = description.trim().toLowerCase();
-
-  if (fixedDescription.startsWith('i ')) {
-    fixedDescription = fixedDescription.slice(2);
-  }
-
-  return fixedDescription;
-}
 
 async function stopTimer() {
   const timeEntry = await getCurrentTimeEntryAsync();
@@ -40,7 +31,7 @@ async function startTimer({ description }) {
   await stopTimer();
 
   const timeEntry = await startTimeEntryAsync({
-    description: fixDescription(description),
+    description: fixText(description),
   });
 
   console.log(`Started time entry ${timeEntry.id}: "${timeEntry.description}"`);

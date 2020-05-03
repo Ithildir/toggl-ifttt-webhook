@@ -1,3 +1,13 @@
+function fixText(text) {
+  let fixedText = text.trim();
+
+  if (fixedText.toLowerCase().startsWith('i ')) {
+    fixedText = fixedText.slice(2);
+  }
+
+  return `${fixedText.charAt(0).toUpperCase()}${fixedText.slice(1)}`;
+}
+
 function sendStatus(res, status, message) {
   return res.status(status).send(message);
 }
@@ -13,6 +23,7 @@ function withAuth(fn) {
 }
 
 module.exports = {
+  fixText,
   sendStatus,
   withAuth,
 };
