@@ -12,6 +12,16 @@ const getCurrentTimeEntryAsync = promisify(
 const startTimeEntryAsync = promisify(toggl.startTimeEntry.bind(toggl));
 const stopTimeEntryAsync = promisify(toggl.stopTimeEntry.bind(toggl));
 
+function fixDescription(description) {
+  let fixedDescription = description.trim().toLowerCase();
+
+  if (fixedDescription.startsWith('i ')) {
+    fixedDescription = fixedDescription.slice(2);
+  }
+
+  return fixedDescription;
+}
+
 async function stopTimer() {
   const timeEntry = await getCurrentTimeEntryAsync();
 
@@ -29,10 +39,8 @@ async function stopTimer() {
 async function startTimer({ description }) {
   await stopTimer();
 
-  const fixedDescription = description.trim().toLowerCase();
-
   const timeEntry = await startTimeEntryAsync({
-    description: fixedDescription,
+    description: fixDescription(description),
   });
 
   console.log(`Started time entry ${timeEntry.id}: "${timeEntry.description}"`);
