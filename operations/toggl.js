@@ -1,5 +1,6 @@
 const TogglClient = require('toggl-api');
 const { promisify } = require('util');
+const habitica = require('./habitica');
 
 const { TOGGL_API_TOKEN } = process.env;
 
@@ -20,6 +21,8 @@ async function stopTimer() {
     console.log(
       `Stopped time entry ${timeEntry.id}: "${timeEntry.description}"`
     );
+
+    await habitica.scoreByKeyword(timeEntry.description);
   }
 }
 
