@@ -19,8 +19,8 @@
   "license": "MIT",
   "author": "Andrea Di Giorgi",
   "scripts": {
-    "lint": "prettier --check ./api ./test && sort-package-json --check",
-    "lint-fix": "prettier --write ./api ./test && sort-package-json",
+    "lint": "prettier --check . && sort-package-json --check",
+    "lint-fix": "prettier --write . && sort-package-json",
     "test": "ava"
   },
   "prettier": {
