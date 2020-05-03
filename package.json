@@ -23,7 +23,8 @@
     "lint": "prettier --check . && sort-package-json --check",
     "lint-fix": "prettier --write . && sort-package-json",
     "test": "ava",
-    "test-coverage": "nyc --reporter=lcov --reporter=text npm test"
+    "test-coverage": "nyc --reporter=lcov --reporter=text npm test",
+    "validate-coverage": "nyc check-coverage"
   },
   "prettier": {
     "singleQuote": true
@@ -32,6 +33,12 @@
     "require": [
       "dotenv/config"
     ]
+  },
+  "nyc": {
+    "branches": 60,
+    "functions": 70,
+    "lines": 70,
+    "statements": 70
   },
   "dependencies": {
     "superagent": "^5.2.2",
