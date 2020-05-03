@@ -54,7 +54,7 @@ test.serial('Should call Habitica', async (t) => {
   };
   const res = createRes();
 
-  nock('https://habitica.com', {
+  const habiticaScoreNock = nock('https://habitica.com', {
     reqheaders: {
       'x-api-key': 'test-habitica',
       'x-api-user': 'test-habitica-user',
@@ -65,6 +65,8 @@ test.serial('Should call Habitica', async (t) => {
     .reply(200);
 
   await habitica(req, res);
+
+  t.true(habiticaScoreNock.isDone());
 
   t.is(res.status.callCount, 1);
   t.deepEqual(res.status.firstCall.args, [200]);
