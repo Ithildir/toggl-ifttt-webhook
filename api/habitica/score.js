@@ -1,5 +1,5 @@
-const { sendStatus, withAuth } = require('../utils');
-const habitica = require('../operations/habitica');
+const { sendStatus, withAuth } = require('../../utils');
+const habitica = require('../../operations/habitica');
 
 module.exports = withAuth(async (req, res) => {
   const { direction = 'up', taskId } = req.body;

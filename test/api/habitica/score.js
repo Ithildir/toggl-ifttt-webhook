@@ -1,8 +1,8 @@
 const test = require('ava');
 const nock = require('nock');
 const sinon = require('sinon');
-const habitica = require('../../api/habitica');
-const { createRes } = require('../helpers');
+const score = require('../../../api/habitica/score');
+const { createRes } = require('../../helpers');
 
 test.beforeEach(() => {
   nock.disableNetConnect();
@@ -20,7 +20,7 @@ test.serial('Should fail if unauthenticated', async (t) => {
   };
   const res = createRes();
 
-  await habitica(req, res);
+  await score(req, res);
 
   t.is(res.status.callCount, 1);
   t.deepEqual(res.status.firstCall.args, [403]);
@@ -35,7 +35,7 @@ test.serial('Should fail if the taskId is not specified', async (t) => {
   };
   const res = createRes();
 
-  await habitica(req, res);
+  await score(req, res);
 
   t.is(res.status.callCount, 1);
   t.deepEqual(res.status.firstCall.args, [400]);
@@ -64,7 +64,7 @@ test.serial('Should call Habitica', async (t) => {
     .post(`/api/v3/tasks/${taskId}/score/up`)
     .reply(200);
 
-  await habitica(req, res);
+  await score(req, res);
 
   t.true(habiticaScoreNock.isDone());
 
