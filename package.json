@@ -20,14 +20,29 @@
   "license": "MIT",
   "author": "Andrea Di Giorgi",
   "scripts": {
-    "lint": "prettier --check . && sort-package-json --check",
-    "lint-fix": "prettier --write . && sort-package-json",
+    "lint": "eslint . && prettier --check . && sort-package-json --check",
+    "lint-fix": "eslint --fix . && prettier --write . && sort-package-json",
     "test": "ava",
     "test-coverage": "nyc --reporter=lcov --reporter=text npm test",
     "validate-coverage": "nyc check-coverage"
   },
   "prettier": {
     "singleQuote": true
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2018
+    },
+    "extends": [
+      "airbnb-base",
+      "prettier"
+    ],
+    "rules": {
+      "no-console": "off"
+    }
   },
   "ava": {
     "require": [
@@ -48,6 +63,9 @@
     "ava": "^3.8.1",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.1",
     "nock": "^12.0.3",
     "nyc": "^15.0.1",
     "prettier": "^2.0.5",
