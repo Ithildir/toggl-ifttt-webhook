@@ -3,6 +3,7 @@
     "HABITICA_API_KEY": "@habitica-api-key",
     "HABITICA_USER_ID": "789ace32-2101-4d32-95ee-1308eef28b12",
     "TOGGL_API_TOKEN": "@toggl-api-token",
-    "WEBHOOK_AUTH_TOKEN": "@webhook-auth-token"
+    "WEBHOOK_AUTH_TOKEN": "@webhook-auth-token",
+    "WHISK_TOKEN": "@whisk-token"
   }
 }
