@@ -3,12 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "description": "Simple IFTTT webhook with some useful features",
-  "keywords": [
-    "habitica",
-    "ifttt",
-    "toggl",
-    "webhook"
-  ],
   "homepage": "https://github.com/Ithildir/ifttt-webhook#readme",
   "bugs": {
     "url": "https://github.com/Ithildir/ifttt-webhook/issues"
