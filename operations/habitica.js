@@ -1,4 +1,4 @@
-const request = require('superagent');
+const superagent = require('superagent');
 const { fixText } = require('../utils');
 const habiticaKeywords = require('./habiticaKeywords.json');
 
@@ -11,7 +11,7 @@ const HABITICA_HEADERS = {
 };
 
 async function createTask(options) {
-  const { body } = await request
+  const { body } = await superagent
     .post('https://habitica.com/api/v3/tasks/user')
     .set(HABITICA_HEADERS)
     .send({
@@ -23,7 +23,7 @@ async function createTask(options) {
 }
 
 async function score({ direction, taskId }) {
-  await request
+  await superagent
     .post(`https://habitica.com/api/v3/tasks/${taskId}/score/${direction}`)
     .set(HABITICA_HEADERS);
 
