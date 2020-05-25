@@ -1,0 +1,37 @@
+{
+  "recipe": {
+    "id": "107d89eca2562f84544a5dc4634a1759f33",
+    "name": "Spicy Lime Cauliflower Steaks [Vegan]",
+    "description": "Cauliflower steaks are seasoned with lime, paprika, cumin, and agave nectar for a touch of sweetness.",
+    "instructions": {},
+    "images": [
+      {
+        "original": {
+          "url": "https://whisk-res.cloudinary.com/image/upload/v1590247120/recipe/3d1cd1353dc679f3dbfc147ad7abc601.jpg"
+        },
+        "responsive": {
+          "url": "https://whisk-res.cloudinary.com/image/upload/v1590247120/recipe/3d1cd1353dc679f3dbfc147ad7abc601.jpg",
+          "width": 1600,
+          "height": 1000
+        }
+      }
+    ],
+    "source": {
+      "source_recipe_url": "https://www.onegreenplanet.org/vegan-recipe/spicy-lime-cauliflower-steaks/"
+    },
+    "nutrition": {
+      "status": "STATUS_UNAVAILABLE",
+      "glycemic_index": {}
+    },
+    "saved": {
+      "value": true,
+      "owner": true,
+      "type": "RECIPE_TYPE_MANUAL"
+    },
+    "user": {
+      "value": true,
+      "owner": true,
+      "type": "RECIPE_TYPE_MANUAL"
+    }
+  }
+}
