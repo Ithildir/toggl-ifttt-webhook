@@ -29,34 +29,6 @@ async function extractRecipe(url) {
   );
 }
 
-async function findRecipe(url) {
-  let cursor;
-
-  while (cursor !== null) {
-    // eslint-disable-next-line no-await-in-loop
-    const { body } = await superagent
-      .get('https://my.whisk.com/api/grpc/v1/recipes')
-      .set('Authorization', `Bearer ${WHISK_TOKEN}`)
-      .query({
-        'paging.cursors.after': cursor,
-        'sorting.by': 'RECIPE_SORT_BY_SAVE_TIME',
-        'sorting.direction': 'SORT_DIRECTION_DESC',
-      });
-
-    const recipe = body.recipes
-      .map((entry) => entry.recipe)
-      .find((entryRecipe) => entryRecipe.source.source_recipe_url === url);
-
-    if (recipe) {
-      return recipe;
-    }
-
-    cursor = body.paging.cursors.after || null;
-  }
-
-  return null;
-}
-
 async function parseOneGreenPlanet(recipe) {
   const {
     name,
@@ -114,13 +86,9 @@ async function postRecipe(req) {
 }
 
 async function addRecipe(url) {
-  let recipe = await findRecipe(url);
+  const postRecipeReq = await extractRecipe(url);
 
-  if (!recipe) {
-    const postRecipeReq = await extractRecipe(url);
-
-    recipe = await postRecipe(postRecipeReq);
-  }
+  const recipe = await postRecipe(postRecipeReq);
 
   let patchRecipeReq;
 
