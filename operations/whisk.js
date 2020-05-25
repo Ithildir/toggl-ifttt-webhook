@@ -29,14 +29,7 @@ async function extractRecipe(url) {
   );
 }
 
-async function parseOneGreenPlanet(recipe) {
-  const {
-    name,
-    source: { source_recipe_url: url },
-  } = recipe;
-
-  const { text } = await superagent.get(url);
-
+function parseOneGreenPlanet(text, recipe) {
   const $ = cheerio.load(text);
 
   const getTexts = (selector) =>
@@ -61,7 +54,7 @@ async function parseOneGreenPlanet(recipe) {
       })),
       ingredients: getTexts('.recipe-ingredients li'),
       instructions: getTexts('.recipe-preparation li'),
-      name: name.replace(' [Vegan]', ''),
+      name: recipe.name.replace(' [Vegan]', ''),
     },
     update_mask: {
       paths: ['payload'],
@@ -88,16 +81,20 @@ async function postRecipe(req) {
 async function addRecipe(url) {
   const postRecipeReq = await extractRecipe(url);
 
-  const recipe = await postRecipe(postRecipeReq);
-
-  let patchRecipeReq;
+  const promises = [postRecipe(postRecipeReq)];
 
   if (url.includes('onegreenplanet.org')) {
-    patchRecipeReq = await parseOneGreenPlanet(recipe);
+    promises.push(
+      superagent
+        .get(url)
+        .then((res) => parseOneGreenPlanet.bind(null, res.text))
+    );
   }
 
-  if (patchRecipeReq) {
-    await patchRecipe(recipe.id, patchRecipeReq);
+  const [recipe, parseFn] = await Promise.all(promises);
+
+  if (parseFn) {
+    await patchRecipe(recipe.id, parseFn(recipe));
   }
 }
 
