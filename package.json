@@ -55,7 +55,7 @@
     "toggl-api": "^1.0.1"
   },
   "devDependencies": {
-    "ava": "^3.9.0",
+    "ava": "^3.10.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.4.0",
     "eslint-config-airbnb-base": "^14.2.0",
