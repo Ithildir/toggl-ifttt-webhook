@@ -63,7 +63,7 @@
     "eslint-plugin-import": "^2.22.0",
     "nock": "^13.0.4",
     "nyc": "^15.1.0",
-    "prettier": "^2.1.1",
+    "prettier": "^2.1.2",
     "sinon": "^9.0.3",
     "sort-package-json": "^1.44.0"
   }
