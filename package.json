@@ -61,7 +61,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.22.1",
-    "nock": "^13.0.7",
+    "nock": "^13.0.8",
     "nyc": "^15.1.0",
     "prettier": "^2.2.1",
     "sinon": "^9.2.4",
