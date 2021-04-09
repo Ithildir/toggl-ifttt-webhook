@@ -50,7 +50,7 @@
     "statements": 70
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.5",
+    "cheerio": "^1.0.0-rc.6",
     "superagent": "^6.1.0",
     "toggl-api": "^1.0.1"
   },
