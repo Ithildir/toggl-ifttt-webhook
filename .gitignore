@@ -1,4 +1,4 @@
-/.now/
 /.nyc_output/
+/.vercel/
 /coverage/
 /node_modules/
