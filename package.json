@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "@googleapis/fitness": "^0.2.0",
-    "cheerio": "^1.0.0-rc.11",
+    "cheerio": "^1.0.0-rc.12",
     "superagent": "^7.1.6",
     "toggl-api": "^1.0.1"
   },
