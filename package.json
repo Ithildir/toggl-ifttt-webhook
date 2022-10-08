@@ -53,7 +53,7 @@
     "@googleapis/fitness": "^1.0.2",
     "cheerio": "^1.0.0-rc.12",
     "superagent": "^8.0.2",
-    "toggl-api": "^1.0.1"
+    "toggl-api": "^1.0.2"
   },
   "devDependencies": {
     "ava": "^3.15.0",
