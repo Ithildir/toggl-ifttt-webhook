@@ -50,10 +50,7 @@
     "statements": 70
   },
   "dependencies": {
-    "@googleapis/fitness": "^1.0.2",
-    "cheerio": "^1.0.0-rc.12",
-    "superagent": "^8.0.2",
-    "toggl-api": "^1.0.1"
+    "superagent": "^8.0.2"
   },
   "devDependencies": {
     "ava": "^3.15.0",
@@ -69,6 +66,6 @@
     "sort-package-json": "^2.0.0"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   }
 }
