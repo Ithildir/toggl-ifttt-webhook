@@ -9,6 +9,13 @@ const HABITICA_HEADERS = {
   'x-client': `${HABITICA_USER_ID}-Testing`,
 };
 
+const PRIORITIES = Object.freeze({
+  trivial: 0.1,
+  easy: 1,
+  medium: 1.5,
+  hard: 2,
+});
+
 async function createTask(options) {
   const { body } = await superagent
     .post('https://habitica.com/api/v3/tasks/user')
@@ -21,6 +28,19 @@ async function createTask(options) {
   console.log(`Created Habitica ${body.data.type} ${body.data.id}`);
 }
 
+async function getTasks(type) {
+  const { body } = await superagent
+    .get('https://habitica.com/api/v3/tasks/user')
+    .query({ type })
+    .set(HABITICA_HEADERS);
+
+  if (!body.success) {
+    throw new Error(`Habitica failed when getting ${type}tasks`);
+  }
+
+  return body.data;
+}
+
 async function score({ direction, taskId }) {
   await superagent
     .post(`https://habitica.com/api/v3/tasks/${taskId}/score/${direction}`)
@@ -30,6 +50,8 @@ async function score({ direction, taskId }) {
 }
 
 module.exports = {
+  PRIORITIES,
   createTask,
+  getTasks,
   score,
 };

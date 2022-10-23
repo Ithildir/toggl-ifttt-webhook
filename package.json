@@ -50,6 +50,7 @@
     "statements": 70
   },
   "dependencies": {
+    "anydo-api": "^0.2.0",
     "superagent": "^8.0.2"
   },
   "devDependencies": {
