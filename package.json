@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "anydo-api": "^0.2.0",
-    "superagent": "^8.0.2"
+    "superagent": "^8.0.3"
   },
   "devDependencies": {
     "ava": "^3.15.0",
