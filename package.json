@@ -54,7 +54,7 @@
     "superagent": "^8.0.6"
   },
   "devDependencies": {
-    "ava": "^3.15.0",
+    "ava": "^5.1.0",
     "dotenv": "^16.0.3",
     "eslint": "^8.31.0",
     "eslint-config-airbnb-base": "^15.0.0",
